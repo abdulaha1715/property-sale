@@ -2,7 +2,7 @@
     <div class="relative z-10 pt-48 pb-52 bg-cover bg-center" style="background-image: url(/images/hero-bg.jpeg)">
         <div class="absolute h-full w-full bg-black opacity-70 top-0 left-0 z-10"></div>
         <div class="container relative z-20 text-white text-center text-2xl">
-            <h2 class="font-bold text-5xl">Guide Property ---- yout guide <br /> to the primary real estate market in Dubal</h2>
+            <h2 class="font-bold text-5xl mb-8">Guide Property ---- yout guide <br /> to the primary real estate market in Dubal</h2>
             <p>The most convenient real estate search portal in Dubal, start searching now!</p>
         </div>
     </div>

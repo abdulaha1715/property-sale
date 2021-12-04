@@ -93,3 +93,5 @@
         </div>
     </div>
 </div>
+
+<img class="w-full" src="/images/footer-bottom-bg.jpeg" alt="">

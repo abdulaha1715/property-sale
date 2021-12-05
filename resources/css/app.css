@@ -29,6 +29,14 @@
     font-display: swap;
 }
 
+.section-heading {
+    @apply text-center font-bold text-4xl mb-10;
+}
+
+.ful-width-btn {
+    @apply bg-gray-800 text-white px-6 py-2 rounded w-full inline-block text-center;
+}
+
 body {
 }
 
@@ -47,10 +55,10 @@ h6 {
     max-width: 1200px;
 }
 
-.section-heading {
-    @apply text-center font-bold text-4xl mb-10;
+.sticky-header-active {
+    background-color: #fff;
 }
 
-.ful-width-btn {
-    @apply bg-gray-800 text-white px-6 py-2 rounded w-full inline-block text-center;
+.sticky-header-active a {
+    color: #333;
 }

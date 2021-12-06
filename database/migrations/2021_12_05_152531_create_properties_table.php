@@ -17,6 +17,7 @@ class CreatePropertiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('freatured_image');
+            $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('sale')->default( '1' )->comment('0=rent, 1=sale');
             $table->unsignedBigInteger('type')->default( '1' )->comment('0=land, 1=apartment, 2=villa');
             $table->string('bedrooms')->nullable();    

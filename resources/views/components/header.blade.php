@@ -1,4 +1,4 @@
-<div class="fixed w-full py-4 px-12 flex justify-between items-center z-30 sticky-header">
+<div class="fixed top-0 w-full py-4 px-12 flex justify-between items-center z-30 sticky-header {{request()->routeIs('home') ? '' : 'genarel-header'}}">
     <div class="min-w-max">
         <img width="140px" src="/images/logo.png" alt="">
     </div>

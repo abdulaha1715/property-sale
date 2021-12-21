@@ -17,7 +17,7 @@ class CreatePropertiesTable extends Migration
             $table->id();
             $table->string('name');
 
-            $table->unsignedBigInteger('freatured_image_id');
+            $table->string('freatured_image');
             $table->unsignedBigInteger('location_id');
 
             $table->unsignedBigInteger('price');
@@ -36,7 +36,7 @@ class CreatePropertiesTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('freatured_image_id')->references('id')->on('media');
+            // $table->foreign('freatured_image_id')->references('id')->on('media');
             $table->foreign('location_id')->references('id')->on('locations');
         });
     }

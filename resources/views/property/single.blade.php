@@ -52,53 +52,23 @@
             {{-- Left Content --}}
             <div class="w-9/12">
                 <div id="slider">
+
                     <div class="gallery-slider">
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-2.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-3.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-2.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-3.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-2.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-3.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-3.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-2.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-3.jpeg)" class="single-gallery-item bg-cover bg-center"></div>
+                        @foreach ($property->gallery as $gallery)
+                            <div style="background-image: url({{ $gallery->name }})" class="single-gallery-item bg-cover bg-center"></div>
+                        @endforeach
+
                     </div>
 
                     <div class="thumbnail-slider">
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-2.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-3.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-2.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-3.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-2.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-3.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-2.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-1.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                        <div style="background-image: url(/images/blog-3.jpeg)" class="single-thumbnail-item bg-cover bg-center"></div>
+                        @foreach ($property->gallery as $gallery)
+                            <div style="background-image: url({{ $gallery->name }})" class="single-thumbnail-item bg-cover bg-center"></div>
+                        @endforeach
+
                     </div>
+
                 </div>
-                {{-- <div id="slider" class="">
-                    <div class="gallery-slider">
-                        @foreach($property->gallery as $gallery)
-                        <div style="background-image: url({{$gallery->name}})" class="single-gallery-item bg-cover bg-center"></div>
-                        @endforeach
-                    </div>
 
-                    <div class="thumbnail-slider">
-                        @foreach($property->gallery as $gallery)
-                        <div style="background-image: url({{$gallery->name}})" class="single-thumbnail-item bg-cover bg-center"></div>
-                        @endforeach
-                    </div>
-                </div> --}}
                 {{-- Overview --}}
                 <div class="flex justify-between items-center bg-white p-8 mt-10 shadow-sm">
                     <h4 class="text-lg w-2/12">Overview</h4>
@@ -147,7 +117,7 @@
                                     <div class="flex"><i
                                             class="fa fa-map-marker mr-2 text-red-400 w-5 text-center"></i><span
                                             class="text-sm">Location:</span></div>
-                                    {{-- <span class="ml-2 font-bold">{{$property->location->name}}</span> --}}
+                                    <span class="ml-2 font-bold">{{$property->location->name}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -157,7 +127,7 @@
                                     <div class="flex"><i
                                             class="fa fa-gratipay mr-2 text-red-400 w-5 text-center"></i><span
                                             class="text-sm">Living space sqm:</span></div>
-                                    <span class="ml-2 font-bold">327</span>
+                                    <span class="ml-2 font-bold">{{$property->net_sqm}}</span>
                                 </li>
                                 <li class="flex text-sm">
                                     <div class="flex"><i

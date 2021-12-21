@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="pt-20">        
+    <div class="pt-20">
         <h2 class="section-heading">Articles & Advices</h2>
         <div class="flex -mx-4">
             <div class="flex-1 px-4">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="flex-1 px-4">
                 <div class="bg-white flex rounded-2xl">
                     <div style="min-height: 130px" class="bg-gray-500 w-64 rounded-tl-2xl rounded-bl-2xl">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="flex-1 px-4">
                 <div class="bg-white flex rounded-2xl">
                     <div style="min-height: 130px" class="bg-gray-500 w-64 rounded-tl-2xl rounded-bl-2xl">
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <div class="pt-20 text-lg border-b-2 border-gray-300 pb-16 mb-20">        
+    <div class="pt-20 text-lg border-b-2 border-gray-300 pb-16 mb-20">
         <h2 class="section-heading">Additional Services</h2>
         <div class="flex justify-between -mx-4">
             <div class="flex-1 px-4">

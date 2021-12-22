@@ -16,19 +16,19 @@ class PropertyFactory extends Factory
     {
         return [
             'name'            => $this->faker->sentence,
-            'freatured_image' => 'https://picsum.photos/1200/800',
+            'freatured_image' => 'https://picsum.photos/1200/800?random=' . rand(10, 1000),
             'location_id'     => Location::all()->random()->id,
             'price'           => rand(100000,500000),
-            'sale'            => rand(0,1),
-            'type'            => rand(0,2),
+            'sale'            => rand(1,2),
+            'type'            => rand(1,3),
             'bedrooms'        => rand(1,6),
             'bathrooms'       => rand(1,5),
             'net_sqm'         => rand(55,300),
             'gross_sqm'       => rand(65,450),
             'pool'            => rand(0,3),
-            'overview'        => $this->faker->text(100),
+            'overview'        => $this->faker->text(250),
             'why_buy'         => $this->faker->text(1000),
-            'description'     => $this->faker->text(500),
+            'description'     => $this->faker->text(1500),
         ];
     }
 }

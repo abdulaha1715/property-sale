@@ -14,11 +14,11 @@
     <div class="bg-white py-8">
         <div class="container mx-auto">
             <h2 class="text-3xl text-gray-600">Properties
-                @if(request('type') == '0')
+                @if(request('type') == '1')
                     - Land
-                @elseif(request('type') == '1')
-                    - Apartment
                 @elseif(request('type') == '2')
+                    - Apartment
+                @elseif(request('type') == '3')
                     - Villa
                 @endif
 
@@ -40,7 +40,7 @@
 
                 </div>
 
-                {{ $latest_properties->links() }}
+                {{ $latest_properties->withQueryString()->links() }}
             </div>{{-- Left Content End --}}
 
 

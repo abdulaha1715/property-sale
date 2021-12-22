@@ -21,11 +21,22 @@ class PropertyController extends Controller
         if(!empty($request->sale)){
             $latest_properties = $latest_properties->where('sale', $request->sale);
         }
-
-        // For property type search option
+        // For sale search option
         if(!empty($request->type)){
             $latest_properties = $latest_properties->where('type', $request->type);
         }
+
+        // Check Property Type
+        // if (!empty($request->type)) {
+        //     if ($request->type == 'land') {
+        //         $type = 1;
+        //     } elseif ($request->type == 'apartment') {
+        //         $type = 2;
+        //     } elseif ($request->type == 'villa') {
+        //         $type = 3;
+        //     }
+        //     $latest_properties = $latest_properties->where('type', $type);
+        // }
 
 
         // For bedrooms search option

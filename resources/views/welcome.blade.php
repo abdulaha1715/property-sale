@@ -16,17 +16,17 @@
                         <div class="flex flex-col mx-3">
                             <select name="sale" class="border-0 focus:ring-0">
                                 <option value="">Buy or Rent</option>
-                                <option value="1">Buy</option>
-                                <option value="0">Rent</option>
+                                <option value="2">Buy</option>
+                                <option value="1">Rent</option>
                             </select>
                         </div>
                         <div class="py-3 self-center border-gray-500 border"></div>
                         <div class="flex flex-col mx-3">
                             <select name="type" class="border-0 focus:ring-0">
                                 <option value="">Type</option>
-                                <option value="0">Land</option>
-                                <option value="1">Apartmet</option>
-                                <option value="2">Villa</option>
+                                <option value="1">Land</option>
+                                <option value="2">Apartmet</option>
+                                <option value="3">Villa</option>
                             </select>
                         </div>
                         <div class="py-3 self-center border-gray-500 border"></div>

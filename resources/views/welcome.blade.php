@@ -24,9 +24,9 @@
                         <div class="flex flex-col mx-3">
                             <select name="type" class="border-0 focus:ring-0">
                                 <option value="">Type</option>
-                                <option value="1">Land</option>
-                                <option value="2">Apartmet</option>
-                                <option value="3">Villa</option>
+                                <option value="land">Land</option>
+                                <option value="apartment">Apartmet</option>
+                                <option value="villa">Villa</option>
                             </select>
                         </div>
                         <div class="py-3 self-center border-gray-500 border"></div>
@@ -38,7 +38,7 @@
                                 <option value="300000">200000 - 300000</option>
                                 <option value="400000">300000 - 400000</option>
                                 <option value="500000">400000 - 500000</option>
-                                <option value="500000+">500000+</option>
+                                <option value="500001">500000<span class="font-serif">+</span></option>
                             </select>
                         </div>
                         <div class="py-3 self-center border-gray-500 border"></div>

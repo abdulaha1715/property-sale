@@ -1,5 +1,5 @@
 <form action="{{ route('properties') }}" method="GET" class="flex justify-between">
-    <div class="flex w-7/12 justify-between items-center">
+    <div class="items-center flex">
         <div class="flex flex-col mx-3">
             <label class="inputLabel" for="sale">Buy or Rent</label>
             <select id="sale" name="sale" class="border-0 focus:ring-0">

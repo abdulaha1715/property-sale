@@ -104,7 +104,7 @@
         <div class="flex flex-wrap -mx-2 justify-between mt-10">
 
         @foreach($latest_properties as $property)
-            @include('components.single-property-card', ['property' => $property])
+            @include('components.single-property-card', ['property' => $property, 'width' => 'w-1/4'])
         @endforeach
 
         </div>

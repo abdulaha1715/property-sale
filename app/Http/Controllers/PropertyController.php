@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
 use App\Models\Property;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,8 @@ class PropertyController extends Controller
 
     public function index(Request $request) {
 
+        $locations = Location::select('id', 'name')->get();
+
         $latest_properties = Property::latest();
 
         // For sale search option
@@ -25,6 +28,11 @@ class PropertyController extends Controller
         // For sale search option
         if(!empty($request->type)){
             $latest_properties = $latest_properties->where('type', $request->type);
+        }
+
+        // For location search option
+        if(!empty($request->location)){
+            $latest_properties = $latest_properties->where('location_id', $request->location);
         }
 
         // For Property Price
@@ -63,9 +71,14 @@ class PropertyController extends Controller
             $latest_properties = $latest_properties->where('bedrooms', $request->bedrooms);
         }
 
+        // For query search option
+        if(!empty($request->property_name)){
+            $latest_properties = $latest_properties->where('name', 'LIKE', '%' . $request->property_name . '%');
+        }
+
         $latest_properties = $latest_properties->paginate(12);
 
 
-        return view('property.index', ['latest_properties' => $latest_properties]);
+        return view('property.index', ['latest_properties' => $latest_properties, 'locations' => $locations ]);
     }
 }

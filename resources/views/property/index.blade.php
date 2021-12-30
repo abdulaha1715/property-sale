@@ -46,8 +46,8 @@
 
 
             {{-- Sidebar --}}
-            <div class="w-3/12 ml-6">
-
+            <div class="w-3/12 ml-6 vertical-search-form">
+                @include('components.property-search-form')
             </div>
 
 

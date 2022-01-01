@@ -7,17 +7,17 @@
 
     <div class="w-full">
         <ul class="flex justify-center">
-            <li><a class="inline-block p-4 text-white" href="{{ route('properties') }}?type=land">Land</a></li>
-            <li><a class="inline-block p-4 text-white" href="{{ route('properties') }}?type=villa">Villa</a></li>
-            <li><a class="inline-block p-4 text-white" href="{{ route('properties') }}?type=apartment">Apartment</a></li>
-            <li><a class="inline-block p-4 text-white" href="{{ route('page', 'about-us') }}">About Us</a></li>
-            <li><a class="inline-block p-4 text-white" href="{{ route('page', 'contact-us') }}">Contact Us</a></li>
+            <li><a class="inline-block p-4 text-white" href="{{ route('properties') }}?type=land">{{__('Land')}}</a></li>
+            <li><a class="inline-block p-4 text-white" href="{{ route('properties') }}?type=villa">{{__('Villa')}}Villa</a></li>
+            <li><a class="inline-block p-4 text-white" href="{{ route('properties') }}?type=apartment">{{__('Apartment')}}</a></li>
+            <li><a class="inline-block p-4 text-white" href="{{ route('page', 'about-us') }}">{{__('About Us')}}</a></li>
+            <li><a class="inline-block p-4 text-white" href="{{ route('page', 'contact-us') }}">{{__('Contact Us')}}</a></li>
         </ul>
     </div>
 
     <div class="min-w-max text-3xl">
-        <a href="">🇹🇷</a>
-        <a href="">🇺🇸</a>
+        <a href="{{ LaravelLocalization::getLocalizedURL('en') }}">🇺🇸</a>
+        <a href="{{ LaravelLocalization::getLocalizedURL('tr') }}">🇹🇷</a>
     </div>
 
 </div>

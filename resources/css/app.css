@@ -48,8 +48,20 @@
     @apply text-center font-bold text-4xl mb-10;
 }
 
+.btn {
+    @apply bg-gray-800 text-white px-6 py-2 rounded inline-block text-center;
+}
+
 .ful-width-btn {
     @apply bg-gray-800 text-white px-6 py-2 rounded w-full inline-block text-center;
+}
+
+.propery-label {
+    @apply uppercase text-sm text-green-600 mb-2 cursor-pointer block
+}
+
+.property-input {
+    @apply border border-green-400 w-full px-4 py-2 block
 }
 
 body {
@@ -201,13 +213,8 @@ h6 {
 }
 
 
-.civanoglu-label {
-    @apply uppercase text-sm text-gray-600 mb-2 cursor-pointer block
-}
 
-.civanoglu-input {
-    @apply border border-gray-400 w-full px-4 py-2 block
-}
+
 
 .required-text {
     @apply text-red-500;

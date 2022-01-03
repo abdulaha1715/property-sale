@@ -36,8 +36,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     // Admin Routes
 
     Route::get('/dashboard', [DashboaardController::class, 'index'])->middleware(['auth'])->name('dashboard-index');
+
     Route::get('/dashboard/properties', [DashboaardController::class, 'properties'])->middleware(['auth'])->name('dashboard-properties');
+
     Route::get('/dashboard/add-property', [DashboaardController::class, 'addProperty'])->middleware(['auth'])->name('add-property');
+
+    Route::post('/dashboard/create-property', [DashboaardController::class, 'createProperty'])->middleware(['auth'])->name('create-property');
 
     require __DIR__.'/auth.php';
 

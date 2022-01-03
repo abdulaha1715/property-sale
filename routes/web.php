@@ -43,6 +43,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::post('/dashboard/create-property', [DashboaardController::class, 'createProperty'])->middleware(['auth'])->name('create-property');
 
+    Route::get('/dashboard/edit-property/{id}', [DashboaardController::class, 'editProperty'])->middleware(['auth'])->name('edit-property');
+
     require __DIR__.'/auth.php';
 
 });

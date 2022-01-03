@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\DashboardController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboaardController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -18,8 +22,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-
-Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+    // Frontend Routes
 
     Route::get( '/', [HomeController::class, 'home'])->name('home');
     Route::get( '/property/{id}', [PropertyController::class, 'single'])->name('single-property');
@@ -27,14 +32,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get( '/page/{slug}', [PageController::class, 'single'])->name('page');
     Route::post( '/property-inquiry/{id}', [ContactController::class, 'propertyInquiry'])->name('property-inquiry');
 
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // });
+
+    // Admin Routes
+
+    Route::get('/dashboard', [DashboaardController::class, 'index'])->middleware(['auth'])->name('dashboard-index');
+    Route::get('/dashboard/properties', [DashboaardController::class, 'properties'])->middleware(['auth'])->name('dashboard-properties');
+    Route::get('/dashboard/add-property', [DashboaardController::class, 'addProperty'])->middleware(['auth'])->name('add-property');
+
+    require __DIR__.'/auth.php';
 
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::middleware(['auth'])->group(function() {
+//     Route::get('/dashboard', [DashboaardController::class, 'index'])->name('dashboard-index');
+// });
 
-require __DIR__.'/auth.php';

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
+use App\Models\Media;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboaardController extends Controller
 {
@@ -28,6 +30,7 @@ class DashboaardController extends Controller
             'name'            => 'required',
             'name_tr'         => 'required',
             'freatured_image' => 'required|image',
+            'gallery_images'  => 'required',
             'location_id'     => 'required',
             'price'           => 'required|integer',
             'sale'            => 'integer',
@@ -43,15 +46,25 @@ class DashboaardController extends Controller
             'description_tr'  => 'required',
         ]);
 
+
         $property = new Property();
         $property->name            = $request->name;
         $property->name_tr         = $request->name_tr;
-        $property->freatured_image = 'pending';
+
+        $featured_image_name = time() . '-' . $request->freatured_image->getClientOriginalName();
+
+        // Store the file
+        $request->freatured_image->storeAs('public/uploads', $featured_image_name);
+
+        $property->freatured_image = $featured_image_name;
+
         $property->location_id     = $request->location_id;
         $property->price           = $request->price;
         $property->sale            = $request->sale;
         $property->type            = $request->type;
         $property->bedrooms        = $request->bedrooms;
+        $property->bedrooms        = $request->drawing_rooms;
+        $property->bathrooms       = $request->bathrooms;
         $property->net_sqm         = $request->net_sqm;
         $property->gross_sqm       = $request->gross_sqm;
         $property->pool            = $request->pool;
@@ -63,6 +76,16 @@ class DashboaardController extends Controller
         $property->description_tr  = $request->description_tr;
 
         $property->save();
+
+        foreach ($request->gallery_images as $image) {
+            $gallery_image_name = time() . '-' . $image->getClientOriginalName();
+            $image->storeAs('public/uploads', $gallery_image_name);
+            $media = new Media();
+            $media->name = $gallery_image_name;
+
+            $media->property_id = $property->id;
+            $media->save();
+        }
 
         return redirect(route('dashboard-properties'))->with(['message' => 'Property is added.']);
 

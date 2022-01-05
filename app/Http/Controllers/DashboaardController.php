@@ -36,6 +36,7 @@ class DashboaardController extends Controller
             'sale'            => 'integer',
             'type'            => 'required',
             'bedrooms'        => 'integer',
+            'drawing_rooms'   => 'integer',
             'bathrooms'       => 'integer',
             'net_sqm'         => 'integer',
             'gross_sqm'       => 'integer',
@@ -63,7 +64,7 @@ class DashboaardController extends Controller
         $property->sale            = $request->sale;
         $property->type            = $request->type;
         $property->bedrooms        = $request->bedrooms;
-        $property->bedrooms        = $request->drawing_rooms;
+        $property->drawing_rooms   = $request->drawing_rooms;
         $property->bathrooms       = $request->bathrooms;
         $property->net_sqm         = $request->net_sqm;
         $property->gross_sqm       = $request->gross_sqm;

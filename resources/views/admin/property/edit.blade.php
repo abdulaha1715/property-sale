@@ -16,7 +16,7 @@
                 <form action="{{ route('create-property') }}" method="post" class="p-6 bg-white border-b border-gray-200"> @csrf
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label for="name" class="propery-label">Title</label>
+                            <label for="name" class="propery-label">Title <span class="required-text">*</span></label>
                             <input type="text" name="name" id="name" class="property-input" value="{{ $property->name }}" required>
 
                             @error('name')
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label for="name_tr" class="propery-label">Title - Turkish</label>
+                            <label for="name_tr" class="propery-label">Title - Turkish <span class="required-text">*</span></label>
                             <input type="text" name="name_tr" id="name_tr" class="property-input" value="{{ $property->name_tr }}" required>
 
                             @error('name_tr')
@@ -35,8 +35,8 @@
                     </div>
 
                     <div class="mb-6">
-                        <label for="freatured_image" class="propery-label">Freatured Image</label>
-                        <input type="file" name="freatured_image" id="freatured_image" class="property-input">
+                        <label for="freatured_image" class="propery-label">Freatured Image <span class="required-text">*</span></label>
+                        <input type="file" name="freatured_image" id="freatured_image" class="property-input"  required>
 
                         @error('freatured_image')
                             <p class="text-red-500 mt-2 text-sm">{{ $message }}</p>
@@ -45,7 +45,7 @@
 
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label for="location_id" class="propery-label">Location</label>
+                            <label for="location_id" class="propery-label">Location <span class="required-text">*</span></label>
                             <select name="location_id" id="location_id" class="property-input" required>
                                 <option value="">Select location</option>
                                 @foreach ($locations as $location)
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label for="price" class="propery-label">Price</label>
+                            <label for="price" class="propery-label">Price <span class="required-text">*</span></label>
                             <input type="number" name="price" id="price" class="property-input" value="{{ $property->price }}" required>
 
                             @error('price')
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label for="sale" class="propery-label">Sale Type</label>
+                            <label for="sale" class="propery-label">Sale Type <span class="required-text">*</span></label>
                             <select name="sale" id="sale" class="property-input" required>
                                 <option value="">Select Sale Type</option>
                                 <option {{ $property->sale == 1 ? 'selected="selected"' :'' }} value="1">Rent</option>
@@ -81,7 +81,7 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label for="type" class="propery-label">Property Type</label>
+                            <label for="type" class="propery-label">Property Type <span class="required-text">*</span></label>
                             <select name="type" id="type" class="property-input" required>
                                 <option value="">Select Property Type</option>
                                 <option {{ $property->type == 'land' ? 'selected="selected"' :'' }}  value="1">Land</option>
@@ -97,15 +97,34 @@
 
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
+                            <label class="civanoglu-label" for="drawing_rooms">Drawing rooms</label>
+                            <select class="civanoglu-input"  name="drawing_rooms" id="drawing_rooms">
+                                <option value="">Select one</option>
+
+                                @for($x = 0; $x <= 3; $x++)
+                                    <option {{$property->drawing_rooms == $x ? 'selected="selected"' : ''}} value="{{$x}}">{{$x}}</option>
+                                @endfor
+                            </select>
+
+                            @error('drawing_rooms')
+                            <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
+                            @enderror
+                        </div>
+
+                        <div class="flex-1 px-4">
                             <label for="bedrooms" class="propery-label">Bedrooms</label>
                             <select name="bedrooms" id="bedrooms" class="property-input">
                                 <option value="">Select bedrooms</option>
-                                <option {{ $property->bedrooms == 1 ? 'selected="selected"' :'' }} value="1">1</option>
+                                {{-- <option {{ $property->bedrooms == 1 ? 'selected="selected"' :'' }} value="1">1</option>
                                 <option {{ $property->bedrooms == 2 ? 'selected="selected"' :'' }} value="2">2</option>
                                 <option {{ $property->bedrooms == 3 ? 'selected="selected"' :'' }} value="3">3</option>
                                 <option {{ $property->bedrooms == 4 ? 'selected="selected"' :'' }} value="4">4</option>
                                 <option {{ $property->bedrooms == 5 ? 'selected="selected"' :'' }} value="5">5</option>
-                                <option {{ $property->bedrooms == 6 ? 'selected="selected"' :'' }} value="6">6</option>
+                                <option {{ $property->bedrooms == 6 ? 'selected="selected"' :'' }} value="6">6</option> --}}
+
+                                @for($x = 0; $x <= 6; $x++)
+                                    <option {{$property->bedrooms == $x ? 'selected="selected"' : ''}} value="{{$x}}">{{$x}}</option>
+                                @endfor
                             </select>
 
                             @error('bedrooms')
@@ -117,12 +136,15 @@
                             <label for="bathrooms" class="propery-label">Bathrooms</label>
                             <select name="bathrooms" id="bathrooms" class="property-input">
                                 <option value="">Select bathrooms</option>
-                                <option {{ $property->bathrooms == 1 ? 'selected="selected"' :'' }} value="1">1</option>
+                                {{-- <option {{ $property->bathrooms == 1 ? 'selected="selected"' :'' }} value="1">1</option>
                                 <option {{ $property->bathrooms == 2 ? 'selected="selected"' :'' }} value="2">2</option>
                                 <option {{ $property->bathrooms == 3 ? 'selected="selected"' :'' }} value="3">3</option>
                                 <option {{ $property->bathrooms == 4 ? 'selected="selected"' :'' }} value="4">4</option>
-                                <option {{ $property->bathrooms == 5 ? 'selected="selected"' :'' }} value="5">5</option>
+                                <option {{ $property->bathrooms == 5 ? 'selected="selected"' :'' }} value="5">5</option> --}}
 
+                                @for($x = 0; $x <= 5; $x++)
+                                    <option {{$property->bathrooms == $x ? 'selected="selected"' : ''}} value="{{$x}}">{{$x}}</option>
+                                @endfor
                             </select>
 
                             @error('sale')
@@ -131,7 +153,7 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label for="net_sqm" class="propery-label">Net square meeter</label>
+                            <label for="net_sqm" class="propery-label">Net square meeter <span class="required-text">*</span></label>
                             <input type="number" name="net_sqm" id="net_sqm" class="property-input" value="{{ $property->net_sqm }}" required>
 
                             @error('net_sqm')
@@ -166,7 +188,7 @@
 
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label for="overview" class="propery-label">Overview</label>
+                            <label for="overview" class="propery-label">Overview <span class="required-text">*</span></label>
                             <textarea name="overview" id="overview" cols="30" rows="3" class="property-input" required>{{ $property->overview }}</textarea>
 
                             @error('overview')
@@ -175,7 +197,7 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label for="overview_tr" class="propery-label">Overview - Tr</label>
+                            <label for="overview_tr" class="propery-label">Overview - Tr <span class="required-text">*</span></label>
                             <textarea name="overview_tr" id="overview_tr" cols="30" rows="3" class="property-input" required>{{ $property->overview_tr }}</textarea>
 
                             @error('overview_tr')
@@ -186,8 +208,8 @@
 
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label for="why_buy" class="propery-label">Why Buy</label>
-                            <textarea name="why_buy" id="why_buy" cols="30" rows="7" class="property-input">{{ $property->why_buy }}</textarea>
+                            <label for="why_buy" class="propery-label">Why Buy <span class="required-text">*</span></label>
+                            <textarea name="why_buy" id="why_buy" cols="30" rows="7" class="property-input" required>{{ $property->why_buy }}</textarea>
 
                             @error('why_buy')
                                 <p class="text-red-500 mt-2 text-sm">{{ $message }}</p>
@@ -195,8 +217,8 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label for="why_buy_tr" class="propery-label">Why Buy - Tr</label>
-                            <textarea name="why_buy_tr" id="why_buy_tr" cols="30" rows="7" class="property-input">{{ $property->why_buy }}</textarea>
+                            <label for="why_buy_tr" class="propery-label">Why Buy - Tr <span class="required-text">*</span></label>
+                            <textarea name="why_buy_tr" id="why_buy_tr" cols="30" rows="7" class="property-input" required>{{ $property->why_buy }}</textarea>
 
                             @error('why_buy_tr')
                                 <p class="text-red-500 mt-2 text-sm">{{ $message }}</p>
@@ -206,7 +228,7 @@
 
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label for="description" class="propery-label">Description</label>
+                            <label for="description" class="propery-label">Description <span class="required-text">*</span></label>
                             <textarea name="description" id="description" cols="30" rows="10" class="property-input" required>{{ $property->description }}</textarea>
 
                             @error('description')
@@ -215,7 +237,7 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label for="description_tr" class="propery-label">Description - Tr</label>
+                            <label for="description_tr" class="propery-label">Description - Tr <span class="required-text">*</span></label>
                             <textarea name="description_tr" id="description_tr" cols="30" rows="10" class="property-input" required>{{ $property->description_tr }}</textarea>
 
                             @error('description_tr')

@@ -23,6 +23,7 @@ class PropertyFactory extends Factory
             'sale'               => rand(1,2),
             'type'               => $this->faker->randomElement($array = array ('land','apartment','villa')),
             'bedrooms'           => rand(1,6),
+            'drawing_rooms'      => rand(1,3),
             'bathrooms'          => rand(1,5),
             'net_sqm'            => rand(55,300),
             'gross_sqm'          => rand(65,450),

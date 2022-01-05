@@ -27,7 +27,7 @@ class DashboaardController extends Controller
         $request->validate([
             'name'            => 'required',
             'name_tr'         => 'required',
-            // 'freatured_image' => 'required|image',
+            'freatured_image' => 'required|image',
             'location_id'     => 'required',
             'price'           => 'required|integer',
             'sale'            => 'integer',

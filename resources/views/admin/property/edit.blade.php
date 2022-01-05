@@ -122,7 +122,7 @@
                                 <option {{ $property->bedrooms == 5 ? 'selected="selected"' :'' }} value="5">5</option>
                                 <option {{ $property->bedrooms == 6 ? 'selected="selected"' :'' }} value="6">6</option> --}}
 
-                                @for($x = 0; $x <= 6; $x++)
+                                @for($x = 1; $x <= 6; $x++)
                                     <option {{$property->bedrooms == $x ? 'selected="selected"' : ''}} value="{{$x}}">{{$x}}</option>
                                 @endfor
                             </select>
@@ -142,7 +142,7 @@
                                 <option {{ $property->bathrooms == 4 ? 'selected="selected"' :'' }} value="4">4</option>
                                 <option {{ $property->bathrooms == 5 ? 'selected="selected"' :'' }} value="5">5</option> --}}
 
-                                @for($x = 0; $x <= 5; $x++)
+                                @for($x = 1; $x <= 5; $x++)
                                     <option {{$property->bathrooms == $x ? 'selected="selected"' : ''}} value="{{$x}}">{{$x}}</option>
                                 @endfor
                             </select>

@@ -84,9 +84,9 @@
                             <label for="type" class="propery-label">Property Type <span class="required-text">*</span></label>
                             <select name="type" id="type" class="property-input" required>
                                 <option value="">Select Property Type</option>
-                                <option {{ $property->type == 'land' ? 'selected="selected"' :'' }}  value="1">Land</option>
-                                <option {{ $property->type == 'apartment' ? 'selected="selected"' :'' }} value="2">Apartment</option>
-                                <option {{ $property->type == 'villa' ? 'selected="selected"' :'' }} value="3">Villa</option>
+                                <option {{ $property->type == '1' ? 'selected="selected"' :'' }}  value="1">Land</option>
+                                <option {{ $property->type == '2' ? 'selected="selected"' :'' }} value="2">Apartment</option>
+                                <option {{ $property->type == '3' ? 'selected="selected"' :'' }} value="3">Villa</option>
                             </select>
 
                             @error('type')

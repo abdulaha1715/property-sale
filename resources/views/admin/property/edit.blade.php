@@ -38,7 +38,7 @@
                         <label for="freatured_image" class="propery-label">Freatured Image <span class="required-text">*</span></label>
                         <input type="file" name="freatured_image" id="freatured_image" class="property-input"  required>
 
-                        <div class="mt-3 w-24">
+                        <div class="mt-3 w-32 p-2 border border-indigo-600">
                             <img src="/uploads/{{$property->freatured_image}}" alt="">
                         </div>
 
@@ -57,9 +57,9 @@
 
                         <div class="flex mt-3">
                             @foreach ($property->gallery as $gallery)
-                                <div style="min-width: 100px" class="mr-4 relative">
+                                <div class="mr-4 relative w-32 p-2 border border-indigo-600">
                                     <div class="flex items-center h-full">
-                                        <img style="max-width: 100px" src="/uploads/{{$gallery->name}}" alt="{{$gallery->name}}">
+                                        <img class="w-full" src="/uploads/{{$gallery->name}}" alt="{{$gallery->name}}">
                                     </div>
                                     <form action="" class="absolute right-0 top-0">
                                         <button type="submit" style="font-size: 8px" class="text-white bg-red-600 px-3 py-1">Delete</button>

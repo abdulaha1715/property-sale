@@ -13,6 +13,25 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6">
+
+                    <div class="mb-6">
+                        <h3>Gallery Images</h3>
+
+                        <div class="flex mt-3">
+                            @foreach ($property->gallery as $gallery)
+                                <div class="mr-4 relative w-32 p-2 border border-indigo-600">
+                                    <div class="flex items-center h-full">
+                                        <img class="w-full" src="/uploads/{{$gallery->name}}" alt="{{$gallery->name}}">
+                                    </div>
+                                    <form method="POST" action="{{ route('delete-media', $gallery->id) }}" onsubmit="return confirm('Do you really want to delete the image');" class="absolute right-0 top-0"> @csrf
+                                        <button type="submit" style="font-size: 8px" class="text-white bg-red-600 px-3 py-1">Delete</button>
+                                    </form>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
                 <form action="{{ route('create-property') }}" method="post" class="p-6 bg-white border-b border-gray-200" enctype="multipart/form-data"> @csrf
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
@@ -54,19 +73,6 @@
                         @error('gallery_images')
                             <p class="text-red-500 mt-2 text-sm">{{ $message }}</p>
                         @enderror
-
-                        <div class="flex mt-3">
-                            @foreach ($property->gallery as $gallery)
-                                <div class="mr-4 relative w-32 p-2 border border-indigo-600">
-                                    <div class="flex items-center h-full">
-                                        <img class="w-full" src="/uploads/{{$gallery->name}}" alt="{{$gallery->name}}">
-                                    </div>
-                                    <form action="" class="absolute right-0 top-0">
-                                        <button type="submit" style="font-size: 8px" class="text-white bg-red-600 px-3 py-1">Delete</button>
-                                    </form>
-                                </div>
-                            @endforeach
-                        </div>
                     </div>
 
                     <div class="flex -mx-4 mb-6">

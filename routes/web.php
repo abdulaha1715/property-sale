@@ -45,6 +45,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::get('/dashboard/edit-property/{id}', [DashboaardController::class, 'editProperty'])->middleware(['auth'])->name('edit-property');
 
+    Route::post('/dashboard/delete-media/{media_id}', [DashboaardController::class, 'deleteMedia'])->middleware(['auth'])->name('delete-media');
+
     require __DIR__.'/auth.php';
 
 });

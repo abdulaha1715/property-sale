@@ -100,4 +100,15 @@ class DashboaardController extends Controller
             'locations' => $locations
         ]);
     }
+
+    public function deleteMedia($media_id) {
+        $media = Media::findOrFail($media_id);
+        // delete the file
+        Storage::delete('public/uploads/' . $media->name);
+
+        // remove row
+        $media -> delete();
+
+        return back();
+    }
 }

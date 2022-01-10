@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ route('create-property') }}" method="post" class="p-6 bg-white border-b border-gray-200" enctype="multipart/form-data"> @csrf
+                <form action="{{ route('update-property' , $property->id) }}" method="post" class="p-6 bg-white border-b border-gray-200" enctype="multipart/form-data"> @csrf
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
                             <label for="name" class="propery-label">Title <span class="required-text">*</span></label>

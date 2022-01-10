@@ -25,12 +25,10 @@ class DashboaardController extends Controller
         return view('admin.property.add', ['locations' => $locations]);
     }
 
-    public function createProperty(Request $request){
-        $request->validate([
+    public function validateProperty() {
+        return [
             'name'            => 'required',
             'name_tr'         => 'required',
-            'freatured_image' => 'required|image',
-            'gallery_images'  => 'required',
             'location_id'     => 'required',
             'price'           => 'required|integer',
             'sale'            => 'integer',
@@ -45,10 +43,10 @@ class DashboaardController extends Controller
             'overview_tr'     => 'required',
             'description'     => 'required',
             'description_tr'  => 'required',
-        ]);
+        ];
+    }
 
-
-        $property = new Property();
+    public function saveOrUpdateProperty($property, $request){
         $property->name            = $request->name;
         $property->name_tr         = $request->name_tr;
 
@@ -87,9 +85,22 @@ class DashboaardController extends Controller
             $media->property_id = $property->id;
             $media->save();
         }
+    }
+
+
+    public function createProperty(Request $request){
+        $updated_validation = $this->validateProperty()[] = [
+            'freatured_image' => 'required|image',
+            'gallery_images'  => 'required',
+        ];
+
+        $request->validate( $updated_validation);
+
+        $property = new Property();
+
+        $this->saveOrUpdateProperty($property, $request);
 
         return redirect(route('dashboard-properties'))->with(['message' => 'Property is added.']);
-
     }
 
     public function editProperty($property_id) {
@@ -110,5 +121,33 @@ class DashboaardController extends Controller
         $media -> delete();
 
         return back();
+    }
+
+    public function updateProperty($property_id, Request $request) {
+        $property = Property::findOrFail($property_id);
+
+        $request->validate( $this->validateProperty() );
+
+        $this->saveOrUpdateProperty($property, $request);
+
+        return redirect(route('dashboard-properties'))->with(['message' => 'Property Updated.']);
+    }
+
+    public function deleteProperty($property_id) {
+        $property = Property::findOrFail($property_id);
+        // delete featured image
+        Storage::delete('public/uploads/' . $property->freatured_image);
+
+        // delete gallery items
+        foreach ($property->gallery as $media) {
+            $media = Media::findOrFail($media->id);
+            Storage::delete('public/uploads/' . $media->name);
+            $media->delete();
+        }
+
+        // delete the property
+        $property->delete();
+
+        return redirect(route('dashboard-properties'))->with(['message' => 'Property Deleted.']);
     }
 }

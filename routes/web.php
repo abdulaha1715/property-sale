@@ -43,6 +43,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::post('/dashboard/create-property', [DashboaardController::class, 'createProperty'])->middleware(['auth'])->name('create-property');
 
+    Route::post('/dashboard/update-property/{id}', [DashboaardController::class, 'updateProperty'])->middleware(['auth'])->name('update-property');
+
+    Route::post('/dashboard/delete-property/{id}', [DashboaardController::class, 'deleteProperty'])->middleware(['auth'])->name('delete-property');
+
     Route::get('/dashboard/edit-property/{id}', [DashboaardController::class, 'editProperty'])->middleware(['auth'])->name('edit-property');
 
     Route::post('/dashboard/delete-media/{media_id}', [DashboaardController::class, 'deleteMedia'])->middleware(['auth'])->name('delete-media');

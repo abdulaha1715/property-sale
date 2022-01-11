@@ -28,6 +28,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::get( '/', [HomeController::class, 'home'])->name('home');
     Route::get( '/property/{id}', [PropertyController::class, 'single'])->name('single-property');
+    Route::get( '/locations/{id}', [PropertyController::class, 'single'])->name('single-location');
     Route::get( '/properties/', [PropertyController::class, 'index'])->name('properties');
     Route::get( '/page/{slug}', [PageController::class, 'single'])->name('page');
     Route::post( '/property-inquiry/{id}', [ContactController::class, 'propertyInquiry'])->name('property-inquiry');
@@ -50,6 +51,20 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/dashboard/edit-property/{id}', [DashboaardController::class, 'editProperty'])->middleware(['auth'])->name('edit-property');
 
     Route::post('/dashboard/delete-media/{media_id}', [DashboaardController::class, 'deleteMedia'])->middleware(['auth'])->name('delete-media');
+
+
+    Route::get('/dashboard/locations', [DashboaardController::class, 'locations'])->middleware(['auth'])->name('dashboard-locations');
+
+    Route::get('/dashboard/add-location', [DashboaardController::class, 'addLocation'])->middleware(['auth'])->name('add-location');
+
+    Route::get('/dashboard/create-location', [DashboaardController::class, 'createLocation'])->middleware(['auth'])->name('create-location');
+
+    Route::get('/dashboard/update-location/{id}', [DashboaardController::class, 'updateLocation'])->middleware(['auth'])->name('update-location');
+
+    Route::get('/dashboard/delete-location/{id}', [DashboaardController::class, 'deleteLocation'])->middleware(['auth'])->name('delete-location');
+
+    Route::get('/dashboard/edit-location/{id}', [DashboaardController::class, 'editLocation'])->middleware(['auth'])->name('edit-location');
+
 
     require __DIR__.'/auth.php';
 

@@ -150,4 +150,10 @@ class DashboaardController extends Controller
 
         return redirect(route('dashboard-properties'))->with(['message' => 'Property Deleted.']);
     }
+
+    public function locations() {
+        $locations = Location::latest()->paginate(5);
+
+        return view('admin.location.index', ['locations' => $locations]);
+    }
 }

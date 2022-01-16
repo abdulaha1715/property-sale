@@ -16,18 +16,10 @@
                 <form action="{{ route('create-location') }}" method="post" class="p-6 bg-white border-b border-gray-200" enctype="multipart/form-data"> @csrf
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label for="name" class="propery-label">Title <span class="required-text">*</span></label>
-                            <input type="text" name="name" id="name" class="property-input" value="{{old('name')}}"  required>
+                            <label for="name" class="propery-label">Location <span class="required-text">*</span></label>
+                            <input type="text" name="name" id="name" class="property-input" value="{{old('location')}}"  required>
 
-                            @error('name')
-                                <p class="text-red-500 mt-2 text-sm">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="flex-1 px-4">
-                            <label for="name" class="propery-label">Title <span class="required-text">*</span></label>
-                            <input type="text" name="name" id="name" class="property-input" value="{{old('name')}}"  required>
-
-                            @error('name')
+                            @error('location')
                                 <p class="text-red-500 mt-2 text-sm">{{ $message }}</p>
                             @enderror
                         </div>

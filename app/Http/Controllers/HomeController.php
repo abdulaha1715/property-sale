@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use App\Models\Property;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,5 +18,17 @@ class HomeController extends Controller
             'latest_properties' => $latest_properties,
             'locations' => $locations
         ]);
+    }
+
+    public function single($slug) {
+        $page = Page::where('slug', $slug)->first();
+
+        if (!empty($page)) {
+            return view('page', [
+                'page' => $page
+            ]);
+        } else {
+            return abort(404);
+        }
     }
 }

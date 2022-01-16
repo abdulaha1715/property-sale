@@ -156,4 +156,12 @@ class DashboaardController extends Controller
 
         return view('admin.location.index', ['locations' => $locations]);
     }
+
+    public function addLocation() {
+        return view('admin.location.add');
+    }
+
+    public function editLocation() {
+        return view('admin.location.edit');
+    }
 }

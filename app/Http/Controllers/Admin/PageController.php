@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Page;
+use Flasher\Prime\FlasherInterface;
 
 class PageController extends Controller
 {
@@ -80,10 +81,12 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, FlasherInterface $flasher)
     {
         $page = Page::findOrFail($id);
         $page->delete();
+
+        $flasher->addSuccess('Page has been deleted.');
 
         return back();
     }

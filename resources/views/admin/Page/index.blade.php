@@ -5,7 +5,7 @@
                 {{ __('Page') }}
             </h2>
             <div class="min-w-max">
-                <a href="{{ route('add-location') }}" class="ful-width-btn">Add New Page</a>
+                <a href="{{ route('dashboard-page.create') }}" class="ful-width-btn">Add New Page</a>
             </div>
         </div>
     </x-slot>

@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboaardController;
-use App\Http\Controllers\LocationController;
+use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\PageController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -49,12 +49,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::post('/dashboard/delete-media/{media_id}', [DashboaardController::class, 'deleteMedia'])->middleware(['auth'])->name('delete-media');
 
 
-    Route::get('/dashboard/locations', [DashboaardController::class, 'locations'])->middleware(['auth'])->name('dashboard-locations');
-    Route::get('/dashboard/add-location', [DashboaardController::class, 'addLocation'])->middleware(['auth'])->name('add-location');
-    Route::post('/dashboard/create-location', [DashboaardController::class, 'createLocation'])->middleware(['auth'])->name('create-location');
-    Route::post('/dashboard/update-location/{id}', [DashboaardController::class, 'updateLocation'])->middleware(['auth'])->name('update-location');
-    Route::post('/dashboard/delete-location/{id}', [DashboaardController::class, 'deleteLocation'])->middleware(['auth'])->name('delete-location');
-    Route::get('/dashboard/edit-location/{id}', [DashboaardController::class, 'editLocation'])->middleware(['auth'])->name('edit-location');
+    // Route::get('/dashboard/locations', [DashboaardController::class, 'locations'])->middleware(['auth'])->name('dashboard-locations');
+    // Route::get('/dashboard/add-location', [DashboaardController::class, 'addLocation'])->middleware(['auth'])->name('add-location');
+    // Route::post('/dashboard/create-location', [DashboaardController::class, 'createLocation'])->middleware(['auth'])->name('create-location');
+    // Route::post('/dashboard/update-location/{id}', [DashboaardController::class, 'updateLocation'])->middleware(['auth'])->name('update-location');
+    // Route::post('/dashboard/delete-location/{id}', [DashboaardController::class, 'deleteLocation'])->middleware(['auth'])->name('delete-location');
+    // Route::get('/dashboard/edit-location/{id}', [DashboaardController::class, 'editLocation'])->middleware(['auth'])->name('edit-location');
+
+    Route::resource('dashboard-location', LocationController::class);
 
     Route::resource('dashboard-page', PageController::class);
 

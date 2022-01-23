@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
+use App\Models\Location;
 use Illuminate\Http\Request;
-use App\Models\Page;
 use Flasher\Laravel\Facade\Flasher;
 
-class PageController extends Controller
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::latest()->paginate(20);
-        return view('admin.page.index', ['pages' => $pages]);
+        $locations = Location::latest()->paginate(5);
+
+        return view('admin.location.index', ['locations' => $locations]);
     }
 
     /**
@@ -27,7 +29,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.location.create');
     }
 
     /**
@@ -39,6 +41,16 @@ class PageController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $location = new Location();
+        $location->name = $request->name;
+        $location->save();
+
+        Flasher::addSuccess('Location has been added.');
+        return redirect(route('dashboard-location.index'));
     }
 
     /**
@@ -60,7 +72,9 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $location = Location::findOrFail($id);
+
+        return view('admin.location.edit', ['location' => $location]);
     }
 
     /**
@@ -72,7 +86,16 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $location = Location::findOrFail($id);
+        $location->name = $request->name;
+        $location->save();
+
+        Flasher::addSuccess('Location has been updated.');
+        return redirect(route('dashboard-location.index'));
     }
 
     /**
@@ -83,10 +106,10 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        $page = Page::findOrFail($id);
-        $page->delete();
+        $location = Location::findOrFail($id);
+        $location->delete();
 
-        Flasher::addSuccess('Page has been deleted.');
+        Flasher::addSuccess('Location has been deleted.');
 
         return back();
     }

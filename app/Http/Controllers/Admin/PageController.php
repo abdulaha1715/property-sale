@@ -20,6 +20,30 @@ class PageController extends Controller
         return view('admin.page.index', ['pages' => $pages]);
     }
 
+
+    /**
+     * Resource form validation
+     */
+    public function validatePage() {
+        return [
+            'name'    => 'required',
+            'slug'    => 'required',
+            'content' => 'required',
+        ];
+    }
+
+    /**
+     * Page saveOrUpdate function
+     */
+    public function saveOrUpdate($page, $request) {
+        $page->name    = $request->name;
+        $page->slug    = $request->slug;
+        $page->content = $request->content;
+
+        $page->save();
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +51,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.page.create');
     }
 
     /**
@@ -38,7 +62,13 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validatePage());
+
+        $page = new Page();
+        $this->saveOrUpdate($page, $request);
+
+        Flasher::addSuccess('Page has been added.');
+        return redirect(route('dashboard-page.index'));
     }
 
     /**
@@ -60,7 +90,9 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page = Page::findOrFail($id);
+
+        return view('admin.Page.edit', ['page' => $page]);
     }
 
     /**
@@ -72,7 +104,14 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $page = Page::findOrFail($id);
+
+        $request->validate($this->validatePage());
+
+        $this->saveOrUpdate($page, $request);
+
+        Flasher::addSuccess('Page has been updated.');
+        return redirect(route('dashboard-page.index'));
     }
 
     /**

@@ -20,7 +20,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function single($slug) {
+    public function singlePage($slug) {
         $page = Page::where('slug', $slug)->first();
 
         if (!empty($page)) {

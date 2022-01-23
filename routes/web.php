@@ -31,7 +31,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get( '/property/{id}', [PropertyController::class, 'single'])->name('single-property');
     Route::get( '/locations/{id}', [PropertyController::class, 'single'])->name('single-location');
     Route::get( '/properties/', [PropertyController::class, 'index'])->name('properties');
-    Route::get( '/page/{slug}', [HomeController::class, 'singlepage'])->name('page');
+    Route::get( '/page/{slug}', [HomeController::class, 'singlePage'])->name('page');
     Route::post( '/property-inquiry/{id}', [ContactController::class, 'propertyInquiry'])->name('property-inquiry');
 
 

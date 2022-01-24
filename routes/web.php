@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
 
 use Illuminate\Support\Facades\Route;
@@ -10,6 +9,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboaardController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\UserController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -59,6 +59,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::resource('dashboard-location', LocationController::class);
 
     Route::resource('dashboard-page', PageController::class);
+
+    Route::resource('dashboard-user', UserController::class);
 
     // Route::get('/dashboard/page', [DashboaardController::class, 'pages'])->middleware(['auth'])->name('dashboard-pages');
     // Route::get('/dashboard/add-page', [DashboaardController::class, 'addPage'])->middleware(['auth'])->name('add-page');

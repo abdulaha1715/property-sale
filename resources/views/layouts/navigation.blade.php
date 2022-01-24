@@ -20,7 +20,7 @@
                         {{ __('Properties') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard-location.index')" :active="request()->routeIs('dashboard-location')">
+                    <x-nav-link :href="route('dashboard-location.index')" :active="request()->routeIs('dashboard-location.index')">
                         {{ __('Locations') }}
                     </x-nav-link>
 
@@ -28,11 +28,11 @@
                         {{ __('Pages') }}
                     </x-nav-link>
 
-                    {{-- <x-nav-link :href="route('dashboard-location.index')" :active="request()->routeIs('dashboard-locations')">
-                        {{ __('Locations') }}
+                    <x-nav-link :href="route('dashboard-user.index')" :active="request()->routeIs('dashboard-user.index')">
+                        {{ __('User') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard-location.index')" :active="request()->routeIs('dashboard-locations')">
+                    {{-- <x-nav-link :href="route('dashboard-location.index')" :active="request()->routeIs('dashboard-locations')">
                         {{ __('Locations') }}
                     </x-nav-link> --}}
                 </div>

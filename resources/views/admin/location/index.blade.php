@@ -17,6 +17,7 @@
                     <table class="w-full table-auto mb-6">
                         <thead>
                            <tr>
+                                <th class="border px-4 py-2 text-center">ID</th>
                                 <th class="border px-4 py-2 text-left">Name</th>
                                 <th style="width: 250px" class="border px-4 py-2">Actions</th>
                             </tr>
@@ -24,6 +25,7 @@
                         <tbody>
                             @foreach($locations as $location)
                                 <tr>
+                                    <td class="border px-4 py-2 text-center">{{ $location->id }}</td>
                                     <td class="border px-4 py-2">{{$location->name}}</td>
                                     <td class="border px-4 py-2 text-center">
                                         <a class="bg-blue-500 text-white px-4 py-2 text-xs rounded" href="{{route('dashboard-location.edit', $location->id)}}">Edit</a>

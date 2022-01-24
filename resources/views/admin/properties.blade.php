@@ -17,6 +17,7 @@
                     <table class="w-full table-auto mb-6">
                         <thead>
                            <tr>
+                                <th class="border px-4 py-2 text-center">ID</th>
                                 <th class="border px-4 py-2">Name</th>
                                 <th class="border px-4 py-2">Location</th>
                                 <th class="border px-4 py-2">Price</th>
@@ -27,6 +28,7 @@
                             @foreach ($admin_properties as $property)
 
                             <tr>
+                                <td class="border px-4 py-2 text-center">{{ $property->id }}</td>
                                 <td class="border px-4 py-2">{{ $property->name }}</td>
                                 <td class="border px-4 py-2">{{ $property->location->name }}</td>
                                 <td class="border px-4 py-2">{{ $property->price }}</td>

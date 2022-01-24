@@ -5,7 +5,7 @@
                 {{ __('Edit Property') }}
             </h2>
             <div class="min-w-max">
-                <a href="{{ route('dashboard-properties') }}" class="ful-width-btn">Back</a>
+                <a href="{{ route('dashboard-property.index') }}" class="ful-width-btn">Back</a>
             </div>
         </div>
     </x-slot>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ route('update-property' , $property->id) }}" method="post" class="p-6 bg-white border-b border-gray-200" enctype="multipart/form-data"> @csrf
+                <form action="{{ route('dashboard-property.update' , $property->id) }}" method="post" class="p-6 bg-white border-b border-gray-200" enctype="multipart/form-data"> @csrf @method('put')
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
                             <label for="name" class="propery-label">Title <span class="required-text">*</span></label>
@@ -55,7 +55,7 @@
 
                     <div class="mb-6">
                         <label for="freatured_image" class="propery-label">Freatured Image <span class="required-text">*</span></label>
-                        <input type="file" name="freatured_image" id="freatured_image" class="property-input"  required>
+                        <input type="file" name="freatured_image" id="freatured_image" class="property-input">
 
                         <div class="mt-3 w-32 p-2 border border-indigo-600">
                             <img src="/uploads/{{$property->freatured_image}}" alt="">
@@ -68,7 +68,7 @@
 
                     <div class="mb-6">
                         <label for="gallery_images" class="propery-label">Gallery Images <span class="required-text">*</span></label>
-                        <input type="file" name="gallery_images[]" id="gallery_images" class="property-input" multiple required>
+                        <input type="file" name="gallery_images[]" id="gallery_images" class="property-input" multiple>
 
                         @error('gallery_images')
                             <p class="text-red-500 mt-2 text-sm">{{ $message }}</p>

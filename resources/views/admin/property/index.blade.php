@@ -5,7 +5,7 @@
                 {{ __('Properties') }}
             </h2>
             <div class="min-w-max">
-                <a href="{{ route('add-property') }}" class="ful-width-btn">Add New Property</a>
+                <a href="{{ route('dashboard-property.create') }}" class="ful-width-btn">Add New Property</a>
             </div>
         </div>
     </x-slot>
@@ -25,7 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($admin_properties as $property)
+                            @foreach ($properties as $property)
 
                             <tr>
                                 <td class="border px-4 py-2 text-center">{{ $property->id }}</td>
@@ -33,9 +33,9 @@
                                 <td class="border px-4 py-2">{{ $property->location->name }}</td>
                                 <td class="border px-4 py-2">{{ $property->price }}</td>
                                 <td class="border px-4 py-2 text-center">
-                                    <a class="bg-blue-500 text-white px-4 py-2 text-xs rounded" href="{{ route('edit-property', $property->id) }}">Edit</a>
-                                    <a class="bg-green-500 text-white px-4 py-2 text-xs rounded" href="{{ route('single-property', $property->id) }}">View</a>
-                                    <form onsubmit="return confirm('Do you really want to delete the property?');" action="{{ route('delete-property', $property->id) }}" method="post" class="inline-block"> @csrf
+                                    <a class="bg-blue-500 text-white px-4 py-2 text-xs rounded" href="{{ route('dashboard-property.edit', $property->id) }}">Edit</a>
+                                    <a class="bg-green-500 text-white px-4 py-2 text-xs rounded" href="{{ route('single-property', $property->id) }}" target="_blank">View</a>
+                                    <form onsubmit="return confirm('Do you really want to delete the property?');" action="{{ route('dashboard-property.destroy', $property->id) }}" method="post" class="inline-block"> @csrf @method('delete')
                                         <button style="height: 30px;" type="submit" class="bg-red-500 text-white px-4 py-2 text-xs rounded relative">Delete</button>
                                     </form>
                                 </td>
@@ -45,7 +45,7 @@
                         </tbody>
                     </table>
 
-                    {{ $admin_properties->links() }}
+                    {{ $properties->links() }}
                 </div>
             </div>
         </div>

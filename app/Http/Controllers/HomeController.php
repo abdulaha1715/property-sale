@@ -31,4 +31,10 @@ class HomeController extends Controller
             return abort(404);
         }
     }
+
+    public function singleProperty($id) {
+        $property = Property::findOrFail($id);
+
+        return view('property.single', ['property' => $property]);
+    }
 }

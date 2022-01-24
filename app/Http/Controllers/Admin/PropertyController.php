@@ -99,13 +99,15 @@ class PropertyController extends Controller
         $property->save();
 
         foreach ($request->gallery_images as $image) {
-            $gallery_image_name = time() . '-' . $image->getClientOriginalName();
-            $image->storeAs('public/uploads', $gallery_image_name);
-            $media = new Media();
-            $media->name = $gallery_image_name;
+            if(!empty($image)) {
+                $gallery_image_name = $image->getClientOriginalName() . '-' . time() ;
+                $image->storeAs('public/uploads', $gallery_image_name);
+                $media = new Media();
+                $media->name = $gallery_image_name;
 
-            $media->property_id = $property->id;
-            $media->save();
+                $media->property_id = $property->id;
+                $media->save();
+            }
         }
     }
 
@@ -129,7 +131,7 @@ class PropertyController extends Controller
         $this->saveOrUpdateProperty($property, $request);
 
         Flasher::addSuccess('Property is added.');
-        return redirect(route('dashboard-properties'));
+        return redirect(route('dashboard-property.index'));
     }
 
     /**
@@ -175,7 +177,7 @@ class PropertyController extends Controller
         $this->saveOrUpdateProperty($property, $request);
 
         Flasher::addSuccess('Property Updated.');
-        return redirect(route('dashboard-properties'));
+        return redirect(route('dashboard-property.index'));
     }
 
     /**

@@ -28,9 +28,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     // Frontend Routes
 
     Route::get( '/', [HomeController::class, 'home'])->name('home');
-    Route::get( '/property/{id}', [PropertyController::class, 'single'])->name('single-property');
-    Route::get( '/locations/{id}', [PropertyController::class, 'single'])->name('single-location');
-    Route::get( '/properties/', [PropertyController::class, 'index'])->name('properties');
+    Route::get( '/property/{id}', [HomeController::class, 'singleProperty'])->name('single-property');
+    Route::get( '/locations/{id}', [HomeController::class, 'singleLocation'])->name('single-location');
+    Route::get( '/properties/', [HomeController::class, 'propertyIndex'])->name('properties');
     Route::get( '/page/{slug}', [HomeController::class, 'singlePage'])->name('page');
     Route::post( '/property-inquiry/{id}', [ContactController::class, 'propertyInquiry'])->name('property-inquiry');
 

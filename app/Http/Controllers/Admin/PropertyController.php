@@ -98,8 +98,8 @@ class PropertyController extends Controller
 
         $property->save();
 
-        foreach ($request->gallery_images as $image) {
-            if(!empty($image)) {
+        if (!empty($request->file('gallery_images'))) {
+            foreach ($request->gallery_images as $image) {
                 $gallery_image_name = $image->getClientOriginalName() . '-' . time() ;
                 $image->storeAs('public/uploads', $gallery_image_name);
                 $media = new Media();

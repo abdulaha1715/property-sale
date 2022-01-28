@@ -180,7 +180,7 @@
                     <h1 class="text-2xl font-normal leading-none mb-5">Enquire about this property</h1>
 
                     @if(Session::get('message'))
-                    <p class="text-2xl font-normal leading-none bg-green-100 text-green-700">{{ Session::get('message') }}</p>
+                    <p class="mb-6 p-3 bg-green-100 text-green-700">{{ Session::get('message') }}</p>
                     @endif
 
                     <form action="{{ route('property-inquiry', $property->id) }}" method="POST" enctype="multipart/form-data">

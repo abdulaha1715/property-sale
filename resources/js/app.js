@@ -1,4 +1,9 @@
 require('./bootstrap');
+require('./lity.min');
+
+import feather from 'feather-icons/dist/feather.min';
+
+feather.replace();
 
 import Alpine from 'alpinejs';
 
@@ -31,7 +36,7 @@ jQuery(document).ready(function() {
         nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
     });
 
-    
+
     $ (".thumbnail-slider").slick ({
         slidesToShow: 10,
         slidesToScroll: 1,
@@ -44,3 +49,5 @@ jQuery(document).ready(function() {
         nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
     });
 });
+
+$(document).on('click', '[data-lightbox]', lity);

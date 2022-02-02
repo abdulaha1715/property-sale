@@ -1,15 +1,15 @@
-<form action="{{ route('properties') }}" method="GET" class="flex justify-between">
-    <div class="items-center flex">
-        <div class="flex flex-col mx-3">
+<form action="{{ route('properties') }}" method="GET" class="md:flex justify-between">
+    <div class="md:w-9/12 justify-between items-center md:flex">
+        <div class="flex flex-col md:mx-3">
             <label class="inputLabel" for="sale">{{ __('Rent') }}/{{ __('Sale') }}</label>
-            <select id="sale" name="sale" class="border-0 focus:ring-0">
+            <select id="sale" name="sale" class="border-gray-500 mb-3 md:mb-0 md:border-0 focus:ring-0">
                 <option value="">{{ __('Rent') }}/{{ __('Buy') }}</option>
                 <option {{ request('sale') == 1 ? 'selected="selected"' :'' }} value="1">{{ __('Rent') }}</option>
                 <option {{ request('sale') == 2 ? 'selected="selected"' :'' }} value="2">{{ __('Buy') }}</option>
             </select>
-        </div><div class="flex flex-col mx-3">
+        </div><div class="flex flex-col md:mx-3">
             <label class="inputLabel" for="location">{{ __('Location') }}</label>
-            <select id="location" name="location" class="border-0 focus:ring-0">
+            <select id="location" name="location" class="border-gray-500 mb-3 md:mb-0 md:border-0 focus:ring-0">
                 <option value="">{{ __('Location') }}</option>
                 @foreach ($locations as $location)
 
@@ -18,20 +18,20 @@
                 @endforeach
             </select>
         </div>
-        <div class="py-3 self-center border-gray-500 border"></div>
-        <div class="flex flex-col mx-3">
+        <div class="py-3 self-center border-gray-500 border hidden md:block"></div>
+        <div class="flex flex-col md:mx-3">
             <label class="inputLabel" for="type">{{ __('Type') }}</label>
-            <select id="type" name="type" class="border-0 focus:ring-0">
+            <select id="type" name="type" class="border-gray-500 mb-3 md:mb-0 md:border-0 focus:ring-0">
                 <option value="">{{ __('Type') }}</option>
                 <option {{ request('type') == 'land' ? 'selected="selected"' :'' }} value="land">{{ __('Land') }}</option>
                 <option {{ request('type') == 'apartment' ? 'selected="selected"' :'' }} value="apartment">{{ __('Apartment') }}</option>
                 <option {{ request('type') == 'villa' ? 'selected="selected"' :'' }} value="villa">{{ __('Villa') }}</option>
             </select>
         </div>
-        <div class="py-3 self-center border-gray-500 border"></div>
-        <div class="flex flex-col mx-3">
+        <div class="py-3 self-center border-gray-500 border hidden md:block"></div>
+        <div class="flex flex-col md:mx-3">
             <label class="inputLabel" for="price">{{ __('Price') }}</label>
-            <select id="price" name="price" class="border-0 focus:ring-0">
+            <select id="price" name="price" class="border-gray-500 mb-3 md:mb-0 md:border-0 focus:ring-0">
                 <option value="">{{ __('Price') }}</option>
                 <option {{ request('price') == '100000' ? 'selected="selected"' :'' }} value="100000">0 - 100000</option>
                 <option {{ request('price') == '200000' ? 'selected="selected"' :'' }} value="200000">100000 - 200000</option>
@@ -41,10 +41,10 @@
                 <option {{ request('price') == '500001' ? 'selected="selected"' :'' }} value="500001">500000<span class="font-serif">+</span></option>
             </select>
         </div>
-        <div class="py-3 self-center border-gray-500 border"></div>
-        <div class="flex flex-col mx-3">
+        <div class="py-3 self-center border-gray-500 border hidden md:block"></div>
+        <div class="flex flex-col md:mx-3">
             <label class="inputLabel" for="bedrooms">{{ __('Bedrooms') }}</label>
-            <select id="bedrooms" name="bedrooms" class="border-0 focus:ring-0">
+            <select id="bedrooms" name="bedrooms" class="border-gray-500 mb-3 md:mb-0 md:border-0 focus:ring-0">
                 <option value="">{{ __('Bedrooms') }}</option>
                 <option {{ request('bedrooms') == 1 ? 'selected="selected"' :'' }} value="1">1</option>
                 <option {{ request('bedrooms') == 2 ? 'selected="selected"' :'' }} value="2">2</option>
@@ -54,7 +54,7 @@
             </select>
         </div>
     </div>
-    <div class="flex justify-between items-center w-5/12 ml-5">
+    <div class="flex justify-between items-center md:w-5/12 md:ml-5">
         <input name="property_name" value="{{ request('property_name') }}" type="search" placeholder="{{ __('Search here') }}" class="rounded-lg px-4 py-2 w-full mr-4 focus:border-gray-700 focus:ring-0">
         <button type="submit" class="btn bg-gray-800 text-white py-2 px-4 border-gray-800 border-2  rounded-md">{{ __('Search') }}</button>
     </div>

@@ -223,11 +223,11 @@ h6 {
     min-width: 100%;
 }
 
-
-
-
-
 .required-text {
     @apply text-red-500;
     font-family: sans-serif;
+}
+
+.sticky-header-active .feather-menu {
+    color: #000;
 }
